@@ -42,15 +42,7 @@ function self.update(elapsed)
         objectPlayAnimation('player', 'idleright');
     end
 
-    if getProperty('player.animation.name') == 'up' then
-        setProperty('player.y', getProperty('player.y') - walkSpeed);
-    elseif getProperty('player.animation.name') == 'down' then
-        setProperty('player.y', getProperty('player.y') + walkSpeed);
-    elseif getProperty('player.animation.name') == 'left' then
-        setProperty('player.x', getProperty('player.x') - walkSpeed);
-    elseif getProperty('player.animation.name') == 'right' then
-        setProperty('player.x', getProperty('player.x') + walkSpeed);
-    end
+
 end
 
 function self.getPos(whichonelol)

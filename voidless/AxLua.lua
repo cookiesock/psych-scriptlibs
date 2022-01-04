@@ -4,15 +4,25 @@ self.AxLua = nil;
 
 -- version 1.2
 
-function self.isPressed(key)
+function self.justPressed(key)
     if getPropertyFromClass('flixel.FlxG', 'keys.justPressed.' .. string.upper(key)) then
         return true;
-    elseif getPropertyFromClass('flixel.FlxG', 'keys.justReleased.' .. string.upper(key)) then
-        return false;
     end
-
-    --keylist lol https://api.haxeflixel.com/flixel/input/keyboard/FlxKeyList.html
 end
+
+function self.justReleased(key)
+    if getPropertyFromClass('flixel.FlxG', 'keys.justReleased.' .. string.upper(key)) then
+        return true;
+    end
+end
+
+function self.keyPressed(key)
+    if getPropertyFromClass('flixel.FlxG', 'keys.pressed.' .. string.upper(key)) then
+        return true;
+    end
+end
+
+--keylist lol https://api.haxeflixel.com/flixel/input/keyboard/FlxKeyList.html
 
 function self.roundNumber(num, dp)
     --[[
@@ -36,22 +46,6 @@ function self.getHealthPercent()
         healthPercentage = 0;
     end
     return healthPercentage;
-end
-
-function self.screenCenter(object, axis)
-    if string.lower(axis) == 'x' then
-        local h = screenWidth
-        local m = "width"
-    else
-        local h = screenHeight
-        local m = "height"
-    end
-    if axis ~= nil or axis == 'xy' then
-        setProperty(object .. '.' .. string.lower(axis), (h/2) + (getProperty(object .. m)/2))
-    else
-        setProperty(object .. '.x', (h/2) + (getProperty(object .. m)/2))
-        setProperty(object .. '.y', (h/2) + (getProperty(object .. m)/2))
-    end
 end
 
 function self.floorDecimal(value, decimals)
