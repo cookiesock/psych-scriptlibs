@@ -17,8 +17,8 @@ function self.setup()
     self.defaultWindowFullscreen = getPropertyFromClass('openfl.Lib', 'application.window.fullscreen')
 end
 function self.move(x, y)
-    setPropertyFromClass('openfl.Lib', 'application.window.x', getPropertyFromClass('openfl.Lib', 'application.window.x') + x)
-    setPropertyFromClass('openfl.Lib', 'application.window.y', getPropertyFromClass('openfl.Lib', 'application.window.y') + y)
+    self.setX(self.getX() + x)
+    self.setY(self.getY() + y)
 end
 function self.scale(width, height)
     setPropertyFromClass('openfl.Lib', 'application.window.width', getPropertyFromClass('openfl.Lib', 'application.window.width') + width)
