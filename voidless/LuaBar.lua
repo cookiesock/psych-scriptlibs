@@ -18,6 +18,11 @@ function self.createFilledBar(tag, barcolor)
     addLuaSprite(tag, true);
 end
 
+function self.destroyBar(tag)
+    removeSprite(tag .. 'BG', true);
+    removeSprite(tag, true);
+end
+
 function self.setBarCamera(tag, camera)
     setObjectCamera(tag .. 'BG', camera);
     setObjectCamera(tag, camera);
@@ -31,10 +36,6 @@ end
 function self.setBarAngle(tag, angle)
     setProperty(tag .. 'BG.angle', angle);
     setProperty(tag .. '.angle', angle);
-end
-
-function self.setBarValue(tag, value)
-    setProperty(tag .. '.height', getProperty(tag .. 'BG.height') * value);
 end
 
 return self;
