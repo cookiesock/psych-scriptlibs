@@ -20,7 +20,7 @@ function self.create()
     objectPlayAnimation('player', 'idledown');
 end
 
-function self.updateLol(elapsed)
+function self.update(elapsed)
     if AxLua.justPressed('w') then
         objectPlayAnimation('player', 'up');
     elseif AxLua.justReleased('w') and getProperty('player.animation.name') == 'up' then
@@ -51,6 +51,18 @@ function self.updateLol(elapsed)
     elseif getProperty('player.animation.name') == 'right' then
         setProperty('player.x', getProperty('player.x') + walkSpeed);
     end
+end
+
+function self.getPos(whichonelol)
+    if whichonelol == 'x' then
+        return getProperty('player.x');
+    elseif whichonelol == 'y' then
+        return getProperty('player.y');
+    end
+end
+
+function self.getAnim()
+    return getProperty('player.animation.name');
 end
 
 return self;
